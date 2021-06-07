@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "/static/app.css">
+    <title>Boggle</title>
+</head>
+<body>
+    <h1>Boggle Board</h1>
+    <br>
+    <section id = "boggle">
+        <table class = "board">
+            {% for row in board %}
+                <tr>
+                    {% for letter in row %}
+                        <td class = "letter">{{letter}}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+        
+        <form method = "POST" class = "add-word">
+            <input name = "word" class = "word" autofocus>
+            <button>Submit</button>
+        </form>
+        <br>
+
+        <form class = "restart" action = "/">
+            <button>Restart Game</button>
+        </form>
+        <br>
+
+        <p class = "highscore-and-plays">
+            Highscore: <b>{{highscore}}</b> <br>
+            Plays: <b>{{plays}}</b>
+        </p>
+        <br>
+
+        <p class = "score-and-time">
+            Score: <b class = "score">0</b>
+            <br>
+            Seconds Remaining: <b class = "timer"></b> 
+        </p>
+
+        <p class = "msg">
+
+        </p>
+
+        <ul class = "words">
+
+        </ul>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/static/app.js"></script>
+    <script> 
+        let boggle = new BoggleGame("boggle", 60) 
+    </script>
+</body>
+</html>
